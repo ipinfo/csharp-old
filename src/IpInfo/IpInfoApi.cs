@@ -317,8 +317,7 @@ namespace IpInfo
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Ip { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("hostname", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("hostname", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Hostname { get; set; }
 
         [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.Always)]
