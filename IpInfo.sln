@@ -9,6 +9,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpInfo.IntegrationTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IpInfo.Tests", "src\IpInfo.Tests\IpInfo.Tests.csproj", "{4CAF019A-7F0D-454B-9EAC-CF4722C3269F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E793AF18-4371-4EBD-96FC-195EB1798855}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
+		LICENSE = LICENSE
+		docs\openapi.nswag = docs\openapi.nswag
+		docs\openapi.yaml = docs\openapi.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
