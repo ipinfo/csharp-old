@@ -11,6 +11,38 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <PropertyGroup Label="Nuget">
+    <Version>1.0.0-beta.1</Version>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Authors>IpInfo</Authors>
+    <Company>IpInfo</Company>
+    <Description>This is the official Python client library for the IPinfo.io IP address API, allowing you to lookup your own IP address, or get any of the following details for an IP:
+
+IP geolocation / geoIP data (city, region, country, postal code, latitude and longitude)
+ASN details (ISP or network operator, associated domain name, and type, such as business, hosting or company)
+Firmographics data (the name and domain of the business that uses the IP address)
+Carrier information (the name of the mobile carrier and MNC and MCC for that carrier if the IP is used exclusively for mobile traffic)</Description>
+    <PackageProjectUrl>https://github.com/ipinfo/csharp.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ipinfo/csharp.git</RepositoryUrl>
+    <PackageTags>ipinfo, ip-address, ip-geolocation, ip-data</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageLicenseFile></PackageLicenseFile>
+    <Copyright>Copyright © IpInfo 2020</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>APACHE2.0</PackageLicenseExpression>
+    <PackageIcon>nuget_icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup Label="Nuget">
+    <None Include="..\..\docs\nuget_icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
