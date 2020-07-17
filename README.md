@@ -23,7 +23,7 @@ The free plan is limited to 50,000 requests per month, and doesn't include some 
 
 [![NuGet](https://img.shields.io/nuget/dt/IpInfo.svg?style=flat-square&label=IpInfo)](https://www.nuget.org/packages/IpInfo/)
 
-```bash
+```
 Install-Package IpInfo
 ```
 
@@ -32,13 +32,10 @@ Install-Package IpInfo
 ```cs
 using IpInfo;
 
-#nullable enable
-
 using var client = new HttpClient();
 var api = new IpInfoApi(client);
 
-var response = await api.GetCurrentIpInfoAsync(cancellationToken)
-    .ConfigureAwait(false);
+var response = await api.GetCurrentIpInfoAsync();
 
 Console.WriteLine($"City: {response.City}");
 ```
