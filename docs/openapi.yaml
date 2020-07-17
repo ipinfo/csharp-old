@@ -91,7 +91,6 @@ components:
       type: object
       required:
         - ip
-        - hostname
         - city
         - region
         - country
