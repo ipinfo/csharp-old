@@ -1,0 +1,38 @@
+name: .NET Core
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        dotnet: [ '3.1.200' ]
+        os: [windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} - ${{ matrix.dotnet }}
+    
+    steps:
+    - name: Getting context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      
+    - name: Getting code
+      uses: actions/checkout@v1
+          
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet }}
+    
+    - name: Build
+      run: dotnet build --configuration Release --nologo
+    
+    - name: Run tests
+      run: dotnet test --configuration Release --nologo
+      
+    - name: Try Publish(if the version has changed) IpInfo
+      if: runner.os == 'Windows' &&
+          matrix.dotnet == '3.1.200'
+      run: dotnet nuget push src\IpInfo\bin\Release\IpInfo.*.nupkg -k ${{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json; exit 0
