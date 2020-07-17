@@ -1,0 +1,268 @@
+openapi: 3.0.0
+info:
+  description: |
+    [https://ipinfo.io](https://ipinfo.io).
+  version: "1.0.0"
+  title: ipinfo.io
+  contact:
+    email: havendv@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'https://github.com/ipinfo/csharp/blob/master/LICENSE'
+    
+servers:
+  - url: 'https://ipinfo.io/json'
+  
+tags:
+  - name: ipinfo
+  - name: pet
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+  - name: store
+    description: Access to Petstore orders
+  - name: user
+    description: Operations about user
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+      
+paths:
+  /:
+    get:
+      tags:
+        - ipinfo
+      summary: Get ip information for current IP.
+      description: Returns a full info.
+      operationId: getCurrentIpInfo
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullResponse'
+                
+        '400':
+          description: Invalid ID supplied
+          
+        '404':
+          description: Pet not found
+    
+  '/{ip}':
+    get:
+      tags:
+        - ipinfo
+      summary: Get ip information for current IP.
+      description: Returns a full info.
+      operationId: getIpInfoByIp
+      parameters:
+        - name: ip
+          in: path
+          description: Full IP.
+          required: true
+          schema:
+            type: string
+            
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullResponse'
+                
+        '400':
+          description: Invalid ID supplied
+          
+        '404':
+          description: Pet not found
+        
+        
+externalDocs:
+  description: Find out more about ipinfo.io
+  url: 'https://ipinfo.io/developers'
+  
+  
+components:
+  schemas:
+    FullResponse:
+      type: object
+      required:
+        - ip
+        - hostname
+        - city
+        - region
+        - country
+        - loc
+        - postal
+        - timezone
+        
+      properties:
+        ip:
+          type: string
+          example: '66.87.125.72'
+          
+        hostname:
+          type: string
+          example: 'ip-66-87-125-72.spfdma.spcsdns.net'
+          
+        city:
+          type: string
+          example: 'Springfield'
+          
+        region:
+          type: string
+          example: 'Massachusetts'
+          
+        country:
+          type: string
+          example: 'US'
+          
+        loc:
+          type: string
+          example: '42.0999,-72.5783'
+          
+        postal:
+          type: string
+          example: '01105'
+          
+        timezone:
+          type: string
+          example: 'America/New_York'
+          
+        org:
+          type: string
+          example: 'AS51501 Khabarovsk home networks Ltd'
+          
+        asn:
+          $ref: '#/components/schemas/Asn'
+          
+        company:
+          $ref: '#/components/schemas/Company'
+          
+        carrier:
+          $ref: '#/components/schemas/Carrier'
+          
+        privacy:
+          $ref: '#/components/schemas/Privacy'
+        
+    Asn:
+      type: object
+      required:
+        - asn
+        - name
+        - domain
+        - route
+        - type
+        
+      properties:
+        asn:
+          type: string
+          example: 'AS10507'
+          
+        name:
+          type: string
+          example: 'Sprint Personal Communications Systems'
+          
+        domain:
+          type: string
+          example: 'sprint.net'
+          
+        route:
+          type: string
+          example: '66.87.125.0/24'
+          
+        type:
+          type: string
+          example: 'isp'
+          enum:
+            - isp
+            - business
+            - education
+            - hosting
+        
+    Company:
+      type: object
+      required:
+        - name
+        - domain
+        - type
+        
+      properties:
+        name:
+          type: string
+          example: 'Sprint Springfield POP'
+          
+        domain:
+          type: string
+          example: 'sprint.com'
+          
+        type:
+          type: string
+          example: 'isp'
+          enum:
+            - isp
+            - business
+            - education
+            - hosting
+        
+    Carrier:
+      type: object
+      required:
+        - name
+        - mcc
+        - mnc
+        
+      properties:
+        name:
+          type: string
+          example: 'Sprint Corporation'
+          
+        mcc:
+          type: string
+          example: '310'
+          
+        mnc:
+          type: string
+          example: '120'
+        
+    Privacy:
+      type: object
+      required:
+        - vpn
+        - proxy
+        - tor
+        - hosting
+        
+      properties:
+        vpn:
+          type: boolean
+          example: true
+          
+        proxy:
+          type: boolean
+          example: false
+          
+        tor:
+          type: boolean
+          example: false
+          
+        hosting:
+          type: boolean
+          example: false
+          
+  responses:
+    FullResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FullResponse'
+      description: Full response object
+  
+  securitySchemes:
+    token:
+      type: apiKey
+      name: token
+      in: header
