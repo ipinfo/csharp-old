@@ -47,7 +47,7 @@ paths:
             
       responses:
         '200':
-          $ref: '#/components/schemas/FullResponse'
+          $ref: '#/components/responses/FullResponse'
           
         '404':
           $ref: '#/components/responses/NotFound'
