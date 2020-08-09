@@ -40,6 +40,39 @@ var response = await api.GetCurrentIpInfoAsync();
 Console.WriteLine($"City: {response.City}");
 ```
 
+### Batch API
+
+```cs
+var dictionary = await api.GetInformationByIpsAsync(new[]
+{
+    "8.8.8.8",
+    "8.8.4.4",
+}, cancellationToken);
+
+foreach (var pair in dictionary)
+{
+    Console.WriteLine($"{pair.Key} City: {pair.Value.City}");
+}
+
+// 8.8.4.4 City: Amstelveen
+// 8.8.8.8 City: Mountain View
+
+
+var dictionary = await api.BatchAsync(new []
+{
+    "8.8.4.4/city",
+    "8.8.8.8/city",
+}, cancellationToken);
+
+foreach (var pair in dictionary)
+{
+    Console.WriteLine($"{pair.Key}: {pair.Value}");
+}
+
+// 8.8.4.4: Amstelveen
+// 8.8.8.8: Mountain View
+```
+
 ### Live Example
 
 C# .NET Fiddle - https://dotnetfiddle.net/i5MmNp  
