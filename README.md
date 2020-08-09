@@ -42,8 +42,8 @@ Console.WriteLine($"City: {response.City}");
 
 ### Live Example
 
-C# .NET Fiddle - https://dotnetfiddle.net/xxxxxx  
-VB.NET .NET Fiddle - https://dotnetfiddle.net/xxxxxx  
+C# .NET Fiddle - https://dotnetfiddle.net/i5MmNp 
+VB.NET .NET Fiddle - https://dotnetfiddle.net/EUszSY  
 
 ### Contacts
 * [mail](mailto:havendv@gmail.com)
