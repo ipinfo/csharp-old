@@ -35,6 +35,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
     
+  /batch:
+    post:
+      tags:
+        - general
+      summary: Returns information about the selected values.
+      description: Returns information about the selected values.
+      operationId: batch
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      
+      requestBody:
+        $ref: '#/components/requestBodies/Batch'
+        
+      responses:
+        '200':
+          $ref: '#/components/responses/Batch'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
   '/{ip}':
     get:
       tags:
@@ -534,6 +556,16 @@ components:
               type: string
               example: 'Please provide a valid IP address'
     
+  requestBodies:
+    Batch:
+      description: A JSON array containing values.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
     
   parameters:
     ipParam:
@@ -552,6 +584,29 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/FullResponse'
+            
+    Batch:
+      description: Batch response object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+              
+            example:
+              8.8.8.8/city: Mountain View
+              8.8.8.8:
+                ip: 8.8.8.8
+                hostname: dns.google
+                city: Mountain View
+                region: California
+                country: US
+                loc: 37.4056,-122.0775
+                org: AS15169 Google LLC
+                postal: 94043
+                timezone: America/Los_Angeles
+                
       
     Ip:
       description: An ip.
@@ -631,3 +686,17 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+            
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      
+    BearerAuth:
+      type: http
+      scheme: bearer
+      
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: token
