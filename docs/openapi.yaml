@@ -11,73 +11,78 @@ info:
     url: 'https://github.com/ipinfo/csharp/blob/master/LICENSE'
     
 servers:
-  - url: 'https://ipinfo.io/json'
+  - url: 'https://ipinfo.io/'
   
 tags:
-  - name: ipinfo
-  - name: pet
-    description: Everything about your Pets
+  - name: free
+    description: Free API.
     externalDocs:
       description: Find out more
-      url: 'http://swagger.io'
-  - name: store
-    description: Access to Petstore orders
-  - name: user
-    description: Operations about user
-    externalDocs:
-      description: Find out more about our store
-      url: 'http://swagger.io'
+      url: 'https://ipinfo.io/'
       
 paths:
   /:
     get:
       tags:
-        - ipinfo
-      summary: Get ip information for current IP.
+        - free
+      summary: Get an ip information for the current IP.
       description: Returns a full info.
       operationId: getCurrentIpInfo
       responses:
         '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FullResponse'
-                
-        '400':
-          description: Invalid ID supplied
+          $ref: '#/components/responses/FullResponse'
           
         '404':
-          description: Pet not found
+          $ref: '#/components/responses/NotFound'
     
   '/{ip}':
     get:
       tags:
-        - ipinfo
-      summary: Get ip information for current IP.
+        - free
+      summary: Get an ip information for the selected IP.
       description: Returns a full info.
       operationId: getIpInfoByIp
       parameters:
-        - name: ip
-          in: path
-          description: Full IP.
-          required: true
-          schema:
-            type: string
+        - $ref: '#/components/parameters/ipParam'
             
       responses:
         '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FullResponse'
-                
-        '400':
-          description: Invalid ID supplied
+          $ref: '#/components/schemas/FullResponse'
           
         '404':
-          description: Pet not found
+          $ref: '#/components/responses/NotFound'
+    
+  '/city':
+    get:
+      tags:
+        - free
+      summary: Get a city for the current IP.
+      description: Returns a city for the current IP.
+      operationId: getCurrentCity
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/City'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/city':
+    get:
+      tags:
+        - free
+      summary: Get a city for the selected IP.
+      description: Returns a city for the selected IP.
+      operationId: getCityByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/City'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
         
         
 externalDocs:
@@ -252,14 +257,62 @@ components:
           type: boolean
           example: false
           
+    Error:
+      type: object
+      required:
+        - error
+        
+      properties:
+        error:
+          type: object
+          required:
+            - title
+            - message
+            
+          properties:
+            title:
+              type: string
+              example: 'Wrong ip'
+              
+            message:
+              type: string
+              example: 'Please provide a valid IP address'
+    
+    
+  parameters:
+    ipParam:
+      name: ip
+      in: path
+      description: A single IPv4 or IPv6 IP address.
+      required: true
+      schema:
+        type: string
+      
+      
   responses:
     FullResponse:
+      description: Full response object.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/FullResponse'
-      description: Full response object
-  
+      
+    City:
+      description: A city.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Springfield
+      
+    NotFound:
+      description: Wrong ip. Please provide a valid IP address.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      
+      
   securitySchemes:
     token:
       type: apiKey
