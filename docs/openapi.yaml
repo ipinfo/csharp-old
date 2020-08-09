@@ -14,17 +14,17 @@ servers:
   - url: 'https://ipinfo.io/'
   
 tags:
-  - name: free
-    description: Free API.
-    externalDocs:
-      description: Find out more
-      url: 'https://ipinfo.io/'
+  - name: general
+    description: General API.
+      
+  - name: single
+    description: Single info API.
       
 paths:
   /:
     get:
       tags:
-        - free
+        - general
       summary: Get an ip information for the current IP.
       description: Returns a full info.
       operationId: getCurrentIpInfo
@@ -38,7 +38,7 @@ paths:
   '/{ip}':
     get:
       tags:
-        - free
+        - general
       summary: Get an ip information for the selected IP.
       description: Returns a full info.
       operationId: getIpInfoByIp
@@ -52,10 +52,74 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
     
+  '/ip':
+    get:
+      tags:
+        - single
+      summary: Get the current IP.
+      description: Returns the current IP.
+      operationId: getCurrentIp
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Ip'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/ip':
+    get:
+      tags:
+        - single
+      summary: Get the selected IP.
+      description: Returns the selected IP.
+      operationId: getIpByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Ip'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/hostname':
+    get:
+      tags:
+        - single
+      summary: Get the current hostname.
+      description: Returns the current hostname.
+      operationId: getCurrentHostname
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Hostname'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/hostname':
+    get:
+      tags:
+        - single
+      summary: Get the selected hostname.
+      description: Returns the selected hostname.
+      operationId: getHostnameByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Hostname'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
   '/city':
     get:
       tags:
-        - free
+        - single
       summary: Get a city for the current IP.
       description: Returns a city for the current IP.
       operationId: getCurrentCity
@@ -70,7 +134,7 @@ paths:
   '/{ip}/city':
     get:
       tags:
-        - free
+        - single
       summary: Get a city for the selected IP.
       description: Returns a city for the selected IP.
       operationId: getCityByIp
@@ -80,6 +144,198 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/City'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/region':
+    get:
+      tags:
+        - single
+      summary: Get a region for the current IP.
+      description: Returns a region for the current IP.
+      operationId: getCurrentRegion
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Region'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/region':
+    get:
+      tags:
+        - single
+      summary: Get a region for the selected IP.
+      description: Returns a region for the selected IP.
+      operationId: getRegionByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Region'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/country':
+    get:
+      tags:
+        - single
+      summary: Get a country for the current IP.
+      description: Returns a country for the current IP.
+      operationId: getCurrentCountry
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Country'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/country':
+    get:
+      tags:
+        - single
+      summary: Get a country for the selected IP.
+      description: Returns a country for the selected IP.
+      operationId: getCountryByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Country'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/loc':
+    get:
+      tags:
+        - single
+      summary: Get a location for the current IP.
+      description: Returns a location for the current IP.
+      operationId: getCurrentLocation
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Location'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/loc':
+    get:
+      tags:
+        - single
+      summary: Get a location for the selected IP.
+      description: Returns a location for the selected IP.
+      operationId: getLocationByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Location'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/postal':
+    get:
+      tags:
+        - single
+      summary: Get a postal for the current IP.
+      description: Returns a postal for the current IP.
+      operationId: getCurrentPostal
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Postal'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/postal':
+    get:
+      tags:
+        - single
+      summary: Get a postal for the selected IP.
+      description: Returns a postal for the selected IP.
+      operationId: getPostalByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Postal'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/timezone':
+    get:
+      tags:
+        - single
+      summary: Get a timezone for the current IP.
+      description: Returns a timezone for the current IP.
+      operationId: getCurrentTimezone
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Timezone'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/timezone':
+    get:
+      tags:
+        - single
+      summary: Get a timezone for the selected IP.
+      description: Returns a timezone for the selected IP.
+      operationId: getTimezoneByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Timezone'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/org':
+    get:
+      tags:
+        - single
+      summary: Get a organization for the current IP.
+      description: Returns a organization for the current IP.
+      operationId: getCurrentOrganization
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Organization'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/{ip}/org':
+    get:
+      tags:
+        - single
+      summary: Get a organization for the selected IP.
+      description: Returns a organization for the selected IP.
+      operationId: getOrganizationByIp
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Organization'
           
         '404':
           $ref: '#/components/responses/NotFound'
@@ -297,24 +553,81 @@ components:
           schema:
             $ref: '#/components/schemas/FullResponse'
       
+    Ip:
+      description: An ip.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: '66.87.125.72'
+      
+    Hostname:
+      description: A hostname.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: 'ip-66-87-125-72.spfdma.spcsdns.net'
+      
     City:
       description: A city.
       content:
         text/plain:
           schema:
             type: string
-            example: Springfield
+            example: 'Springfield'
       
+    Region:
+      description: A region.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: 'Massachusetts'
+      
+    Country:
+      description: A country.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: 'US'
+            
+    Location:
+      description: A location.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: '42.0999,-72.5783'
+            
+    Postal:
+      description: A postal.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: '01105'
+            
+    Timezone:
+      description: A timezone.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: 'America/New_York'
+            
+    Organization:
+      description: A organization.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: 'AS51501 Khabarovsk home networks Ltd'
+    
     NotFound:
       description: Wrong ip. Please provide a valid IP address.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-      
-      
-  securitySchemes:
-    token:
-      type: apiKey
-      name: token
-      in: header
