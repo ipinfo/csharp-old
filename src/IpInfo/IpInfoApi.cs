@@ -46,19 +46,19 @@ namespace IpInfo
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
-        /// <summary>Get an ip information for the current IP.</summary>
+        /// <summary>Returns information about the current IP.</summary>
         /// <returns>Full response object.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FullResponse> GetCurrentIpInfoAsync()
+        public System.Threading.Tasks.Task<FullResponse> GetCurrentInformationAsync()
         {
-            return GetCurrentIpInfoAsync(System.Threading.CancellationToken.None);
+            return GetCurrentInformationAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get an ip information for the current IP.</summary>
+        /// <summary>Returns information about the current IP.</summary>
         /// <returns>Full response object.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FullResponse> GetCurrentIpInfoAsync(System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<FullResponse> GetCurrentInformationAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/");
@@ -209,21 +209,21 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get an ip information for the selected IP.</summary>
+        /// <summary>Returns information about the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>Full response object.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<FullResponse> GetIpInfoByIpAsync(string ip)
+        public System.Threading.Tasks.Task<FullResponse> GetInformationByIpAsync(string ip)
         {
-            return GetIpInfoByIpAsync(ip, System.Threading.CancellationToken.None);
+            return GetInformationByIpAsync(ip, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get an ip information for the selected IP.</summary>
+        /// <summary>Returns information about the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>Full response object.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<FullResponse> GetIpInfoByIpAsync(string ip, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<FullResponse> GetInformationByIpAsync(string ip, System.Threading.CancellationToken cancellationToken)
         {
             if (ip == null)
                 throw new System.ArgumentNullException("ip");
@@ -295,7 +295,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get the current IP.</summary>
+        /// <summary>Returns the current IP.</summary>
         /// <returns>An ip.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentIpAsync()
@@ -304,7 +304,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get the current IP.</summary>
+        /// <summary>Returns the current IP.</summary>
         /// <returns>An ip.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentIpAsync(System.Threading.CancellationToken cancellationToken)
@@ -372,7 +372,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get the selected IP.</summary>
+        /// <summary>Returns a ip for the selected IP. Yes, I know this is a pointless method.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>An ip.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -382,7 +382,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get the selected IP.</summary>
+        /// <summary>Returns a ip for the selected IP. Yes, I know this is a pointless method.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>An ip.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -455,7 +455,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get the current hostname.</summary>
+        /// <summary>Returns the current hostname.</summary>
         /// <returns>A hostname.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentHostnameAsync()
@@ -464,7 +464,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get the current hostname.</summary>
+        /// <summary>Returns the current hostname.</summary>
         /// <returns>A hostname.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentHostnameAsync(System.Threading.CancellationToken cancellationToken)
@@ -532,7 +532,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get the selected hostname.</summary>
+        /// <summary>Returns a hostname for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A hostname.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -542,7 +542,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get the selected hostname.</summary>
+        /// <summary>Returns a hostname for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A hostname.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -615,7 +615,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a city for the current IP.</summary>
+        /// <summary>Returns the current city.</summary>
         /// <returns>A city.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentCityAsync()
@@ -624,7 +624,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a city for the current IP.</summary>
+        /// <summary>Returns the current city.</summary>
         /// <returns>A city.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentCityAsync(System.Threading.CancellationToken cancellationToken)
@@ -692,7 +692,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a city for the selected IP.</summary>
+        /// <summary>Returns a city for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A city.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -702,7 +702,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a city for the selected IP.</summary>
+        /// <summary>Returns a city for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A city.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -775,7 +775,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a region for the current IP.</summary>
+        /// <summary>Returns the current region.</summary>
         /// <returns>A region.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentRegionAsync()
@@ -784,7 +784,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a region for the current IP.</summary>
+        /// <summary>Returns the current region.</summary>
         /// <returns>A region.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentRegionAsync(System.Threading.CancellationToken cancellationToken)
@@ -852,7 +852,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a region for the selected IP.</summary>
+        /// <summary>Returns a region for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A region.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -862,7 +862,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a region for the selected IP.</summary>
+        /// <summary>Returns a region for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A region.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -935,7 +935,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a country for the current IP.</summary>
+        /// <summary>Returns the current country.</summary>
         /// <returns>A country.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentCountryAsync()
@@ -944,7 +944,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a country for the current IP.</summary>
+        /// <summary>Returns the current country.</summary>
         /// <returns>A country.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentCountryAsync(System.Threading.CancellationToken cancellationToken)
@@ -1012,7 +1012,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a country for the selected IP.</summary>
+        /// <summary>Returns a country for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A country.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1022,7 +1022,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a country for the selected IP.</summary>
+        /// <summary>Returns a country for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A country.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1095,7 +1095,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a location for the current IP.</summary>
+        /// <summary>Returns the current location.</summary>
         /// <returns>A location.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentLocationAsync()
@@ -1104,7 +1104,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a location for the current IP.</summary>
+        /// <summary>Returns the current location.</summary>
         /// <returns>A location.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentLocationAsync(System.Threading.CancellationToken cancellationToken)
@@ -1255,7 +1255,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a postal for the current IP.</summary>
+        /// <summary>Returns the current postal.</summary>
         /// <returns>A postal.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentPostalAsync()
@@ -1264,7 +1264,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a postal for the current IP.</summary>
+        /// <summary>Returns the current postal.</summary>
         /// <returns>A postal.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentPostalAsync(System.Threading.CancellationToken cancellationToken)
@@ -1332,7 +1332,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a postal for the selected IP.</summary>
+        /// <summary>Returns a postal for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A postal.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1342,7 +1342,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a postal for the selected IP.</summary>
+        /// <summary>Returns a postal for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A postal.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1415,7 +1415,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a timezone for the current IP.</summary>
+        /// <summary>Returns the current timezone.</summary>
         /// <returns>A timezone.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentTimezoneAsync()
@@ -1424,7 +1424,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a timezone for the current IP.</summary>
+        /// <summary>Returns the current timezone.</summary>
         /// <returns>A timezone.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentTimezoneAsync(System.Threading.CancellationToken cancellationToken)
@@ -1492,7 +1492,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a timezone for the selected IP.</summary>
+        /// <summary>Returns a timezone for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A timezone.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1502,7 +1502,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a timezone for the selected IP.</summary>
+        /// <summary>Returns a timezone for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A timezone.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1575,7 +1575,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a organization for the current IP.</summary>
+        /// <summary>Returns the current organization.</summary>
         /// <returns>A organization.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<string> GetCurrentOrganizationAsync()
@@ -1584,7 +1584,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a organization for the current IP.</summary>
+        /// <summary>Returns the current organization.</summary>
         /// <returns>A organization.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<string> GetCurrentOrganizationAsync(System.Threading.CancellationToken cancellationToken)
@@ -1652,7 +1652,7 @@ namespace IpInfo
             }
         }
 
-        /// <summary>Get a organization for the selected IP.</summary>
+        /// <summary>Returns a organization for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A organization.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -1662,7 +1662,7 @@ namespace IpInfo
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>Get a organization for the selected IP.</summary>
+        /// <summary>Returns a organization for the selected IP.</summary>
         /// <param name="ip">A single IPv4 or IPv6 IP address.</param>
         /// <returns>A organization.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
