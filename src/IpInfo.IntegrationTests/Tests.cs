@@ -30,7 +30,7 @@ namespace IpInfo.IntegrationTests
         }
 
         [TestMethod]
-        public async Task GetIpInfoTest()
+        public async Task GetIpInfoByIpTest()
         {
             using var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             var cancellationToken = source.Token;
@@ -46,6 +46,40 @@ namespace IpInfo.IntegrationTests
                 {
                     Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
                 }
+            });
+        }
+
+        [TestMethod]
+        public async Task GetCurrentCityTest()
+        {
+            using var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            var cancellationToken = source.Token;
+
+            await ApiTestAsync(async api =>
+            {
+                var response = await api.GetCurrentCityAsync(cancellationToken)
+                    .ConfigureAwait(false);
+
+                Assert.IsNotNull(response, nameof(response));
+
+                Console.WriteLine(response);
+            });
+        }
+
+        [TestMethod]
+        public async Task GetCityByIpTest()
+        {
+            using var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            var cancellationToken = source.Token;
+
+            await ApiTestAsync(async api =>
+            {
+                var response = await api.GetCityByIpAsync("8.8.8.8", cancellationToken)
+                    .ConfigureAwait(false);
+
+                Assert.IsNotNull(response, nameof(response));
+
+                Console.WriteLine(response);
             });
         }
 
