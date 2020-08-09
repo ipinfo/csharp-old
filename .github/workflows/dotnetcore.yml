@@ -11,6 +11,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} - ${{ matrix.dotnet }}
+    env:
+      IPINFO_TOKEN: ${{ secrets.IPINFO_TOKEN }}
     
     steps:
     - name: Getting context
