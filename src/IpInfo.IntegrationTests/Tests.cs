@@ -15,8 +15,11 @@ namespace IpInfo.IntegrationTests
             using var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             var cancellationToken = source.Token;
 
+            var token = Environment.GetEnvironmentVariable("IPINFO_TOKEN") ?? 
+                        throw new InvalidOperationException("token is null.");
+
             using var client = new HttpClient();
-            var api = new IpInfoApi(client);
+            var api = new IpInfoApi(token, client);
 
             var response = await api.GetCurrentIpInfoAsync(cancellationToken)
                 .ConfigureAwait(false);
