@@ -32,7 +32,7 @@ Carrier information (the name of the mobile carrier and MNC and MCC for that car
     <PackageLicenseFile></PackageLicenseFile>
     <Copyright>Copyright © IpInfo 2020</Copyright>
     <RepositoryType>git</RepositoryType>
-    <PackageLicenseExpression>APACHE2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>nuget_icon.png</PackageIcon>
   </PropertyGroup>
 
