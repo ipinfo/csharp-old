@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using IpInfo.IntegrationTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
