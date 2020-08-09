@@ -20,6 +20,12 @@ tags:
   - name: single
     description: Single info API.
       
+  - name: privacy detection
+    description: Privacy Detection API.
+    externalDocs:
+      description: Find more info here
+      url: https://ipinfo.io/developers/privacy
+      
 paths:
   /:
     get:
@@ -70,6 +76,32 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/FullResponse'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+    
+  '/{ip}/privacy':
+    get:
+      tags:
+        - privacy detection
+      summary: Returns privacy information about the selected IP.
+      description: Returns privacy information about the selected IP.
+      operationId: getPrivacyInformationByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
+      parameters:
+        - $ref: '#/components/parameters/ipParam'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Privacy'
+          
+        '400':
+          $ref: '#/components/responses/TokenNotPassed'
           
         '404':
           $ref: '#/components/responses/NotFound'
@@ -585,6 +617,13 @@ components:
           schema:
             $ref: '#/components/schemas/FullResponse'
             
+    Privacy:
+      description: Full response object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Privacy'
+            
     Batch:
       description: Batch response object.
       content:
@@ -679,6 +718,13 @@ components:
           schema:
             type: string
             example: 'AS51501 Khabarovsk home networks Ltd'
+    
+    TokenNotPassed:
+      description: Token not passed. Please pass a valid token to access this module.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     
     NotFound:
       description: Wrong ip. Please provide a valid IP address.
