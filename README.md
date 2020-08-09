@@ -42,7 +42,7 @@ Console.WriteLine($"City: {response.City}");
 
 ### Live Example
 
-C# .NET Fiddle - https://dotnetfiddle.net/i5MmNp 
+C# .NET Fiddle - https://dotnetfiddle.net/i5MmNp  
 VB.NET .NET Fiddle - https://dotnetfiddle.net/EUszSY  
 
 ### Contacts
