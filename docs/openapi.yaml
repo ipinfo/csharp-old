@@ -25,9 +25,9 @@ paths:
     get:
       tags:
         - general
-      summary: Get an ip information for the current IP.
-      description: Returns a full info.
-      operationId: getCurrentIpInfo
+      summary: Returns information about the current IP.
+      description: Returns information about the current IP.
+      operationId: getCurrentInformation
       responses:
         '200':
           $ref: '#/components/responses/FullResponse'
@@ -61,9 +61,9 @@ paths:
     get:
       tags:
         - general
-      summary: Get an ip information for the selected IP.
-      description: Returns a full info.
-      operationId: getIpInfoByIp
+      summary: Returns information about the selected IP.
+      description: Returns information about the selected IP.
+      operationId: getInformationByIp
       parameters:
         - $ref: '#/components/parameters/ipParam'
             
@@ -78,7 +78,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get the current IP.
+      summary: Returns the current IP.
       description: Returns the current IP.
       operationId: getCurrentIp
             
@@ -93,8 +93,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get the selected IP.
-      description: Returns the selected IP.
+      summary: Returns a ip for the selected IP. Yes, I know this is a pointless method.
+      description: Returns a ip for the selected IP. Yes, I know this is a pointless method.
       operationId: getIpByIp
       parameters:
         - $ref: '#/components/parameters/ipParam'
@@ -110,7 +110,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get the current hostname.
+      summary: Returns the current hostname.
       description: Returns the current hostname.
       operationId: getCurrentHostname
             
@@ -125,8 +125,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get the selected hostname.
-      description: Returns the selected hostname.
+      summary: Returns a hostname for the selected IP.
+      description: Returns a hostname for the selected IP.
       operationId: getHostnameByIp
       parameters:
         - $ref: '#/components/parameters/ipParam'
@@ -142,8 +142,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a city for the current IP.
-      description: Returns a city for the current IP.
+      summary: Returns the current city.
+      description: Returns the current city.
       operationId: getCurrentCity
             
       responses:
@@ -157,7 +157,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a city for the selected IP.
+      summary: Returns a city for the selected IP.
       description: Returns a city for the selected IP.
       operationId: getCityByIp
       parameters:
@@ -174,8 +174,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a region for the current IP.
-      description: Returns a region for the current IP.
+      summary: Returns the current region.
+      description: Returns current region.
       operationId: getCurrentRegion
             
       responses:
@@ -189,7 +189,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a region for the selected IP.
+      summary: Returns a region for the selected IP.
       description: Returns a region for the selected IP.
       operationId: getRegionByIp
       parameters:
@@ -206,8 +206,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a country for the current IP.
-      description: Returns a country for the current IP.
+      summary: Returns the current country.
+      description: Returns the current country.
       operationId: getCurrentCountry
             
       responses:
@@ -221,7 +221,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a country for the selected IP.
+      summary: Returns a country for the selected IP.
       description: Returns a country for the selected IP.
       operationId: getCountryByIp
       parameters:
@@ -238,8 +238,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a location for the current IP.
-      description: Returns a location for the current IP.
+      summary: Returns the current location.
+      description: Returns the current location.
       operationId: getCurrentLocation
             
       responses:
@@ -270,8 +270,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a postal for the current IP.
-      description: Returns a postal for the current IP.
+      summary: Returns the current postal.
+      description: Returns the current postal.
       operationId: getCurrentPostal
             
       responses:
@@ -285,7 +285,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a postal for the selected IP.
+      summary: Returns a postal for the selected IP.
       description: Returns a postal for the selected IP.
       operationId: getPostalByIp
       parameters:
@@ -302,8 +302,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a timezone for the current IP.
-      description: Returns a timezone for the current IP.
+      summary: Returns the current timezone.
+      description: Returns the current timezone.
       operationId: getCurrentTimezone
             
       responses:
@@ -317,7 +317,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a timezone for the selected IP.
+      summary: Returns a timezone for the selected IP.
       description: Returns a timezone for the selected IP.
       operationId: getTimezoneByIp
       parameters:
@@ -334,8 +334,8 @@ paths:
     get:
       tags:
         - single
-      summary: Get a organization for the current IP.
-      description: Returns a organization for the current IP.
+      summary: Returns the current organization.
+      description: Returns the current organization.
       operationId: getCurrentOrganization
             
       responses:
@@ -349,7 +349,7 @@ paths:
     get:
       tags:
         - single
-      summary: Get a organization for the selected IP.
+      summary: Returns a organization for the selected IP.
       description: Returns a organization for the selected IP.
       operationId: getOrganizationByIp
       parameters:
