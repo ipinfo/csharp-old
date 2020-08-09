@@ -29,6 +29,26 @@ namespace IpInfo.IntegrationTests
             });
         }
 
+        [TestMethod]
+        public async Task GetIpInfoTest()
+        {
+            using var source = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            var cancellationToken = source.Token;
+
+            await ApiTestAsync(async api =>
+            {
+                var response = await api.GetIpInfoByIpAsync("8.8.8.8", cancellationToken)
+                    .ConfigureAwait(false);
+
+                Assert.IsNotNull(response, nameof(response));
+
+                foreach (var property in response.GetType().GetProperties())
+                {
+                    Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
+                }
+            });
+        }
+
         private static async Task ApiTestAsync(Func<IpInfoApi, Task> action)
         {
             var token = Environment.GetEnvironmentVariable("IPINFO_TOKEN") ??
