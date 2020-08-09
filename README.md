@@ -33,7 +33,7 @@ Install-Package IpInfo
 using IpInfo;
 
 using var client = new HttpClient();
-var api = new IpInfoApi(client);
+var api = new IpInfoApi("your-token", client);
 
 var response = await api.GetCurrentIpInfoAsync();
 
