@@ -33,7 +33,7 @@ Install-Package IpInfo
 using IpInfo;
 
 using var client = new HttpClient();
-var api = new IpInfoApi("your-token", client);
+var api = new IpInfoApi("your-token", client); // Some methods work without a token, for this case there is a constructor without a token.
 
 var response = await api.GetCurrentInformationAsync();
 
@@ -43,6 +43,7 @@ Console.WriteLine($"City: {response.City}");
 ### Batch API
 
 ```cs
+// WARNING: Token required.
 var dictionary = await api.GetInformationByIpsAsync(new[]
 {
     "8.8.8.8",
@@ -58,6 +59,7 @@ foreach (var pair in dictionary)
 // 8.8.8.8 City: Mountain View
 
 
+// WARNING: Token required.
 var dictionary = await api.BatchAsync(new []
 {
     "8.8.4.4/city",
@@ -71,6 +73,23 @@ foreach (var pair in dictionary)
 
 // 8.8.4.4: Amstelveen
 // 8.8.8.8: Mountain View
+```
+
+### Privacy Detection API
+
+```cs
+// WARNING: Token required.
+var privacy = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
+
+Console.WriteLine($"Vpn: {privacy.Vpn}");
+Console.WriteLine($"Proxy: {privacy.Proxy}");
+Console.WriteLine($"Tor: {privacy.Tor}");
+Console.WriteLine($"Hosting: {privacy.Hosting}");
+
+// Vpn: False
+// Proxy: False
+// Tor: False
+// Hosting: False
 ```
 
 ### Live Example
