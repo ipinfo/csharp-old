@@ -618,7 +618,7 @@ components:
             $ref: '#/components/schemas/FullResponse'
             
     Privacy:
-      description: Full response object.
+      description: Privacy response.
       content:
         application/json:
           schema:
