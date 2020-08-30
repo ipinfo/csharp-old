@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
@@ -28,7 +28,7 @@ Carrier information (the name of the mobile carrier and MNC and MCC for that car
     <PackageProjectUrl>https://github.com/ipinfo/csharp.git</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ipinfo/csharp.git</RepositoryUrl>
     <PackageTags>ipinfo, ip-address, ip-geolocation, ip-data</PackageTags>
-    <PackageReleaseNotes>Added ASN API.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added IP Ranges API.</PackageReleaseNotes>
     <PackageLicenseFile></PackageLicenseFile>
     <Copyright>Copyright © IpInfo 2020</Copyright>
     <RepositoryType>git</RepositoryType>
