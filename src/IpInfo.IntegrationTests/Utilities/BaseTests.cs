@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,28 +40,7 @@ namespace IpInfo.IntegrationTests.Utilities
                     .ConfigureAwait(false);
 
                 Assert.IsNotNull(response, nameof(response));
-
-                foreach (var property in response.GetType().GetProperties())
-                {
-                    var value = property.GetValue(response);
-                    Console.WriteLine($"{property.Name}: {value}");
-
-                    if (value == null || !value.GetType().IsClass || value is string)
-                    {
-                        continue;
-                    }
-
-                    foreach (var objectProperty in value.GetType().GetProperties())
-                    {
-                        try
-                        {
-                            Console.WriteLine($"  {objectProperty.Name}: {objectProperty.GetValue(value)}");
-                        }
-                        catch (TargetParameterCountException)
-                        {
-                        }
-                    }
-                }
+                Console.WriteLine(response.GetPropertiesText());
             });
         }
 
@@ -74,7 +52,6 @@ namespace IpInfo.IntegrationTests.Utilities
                     .ConfigureAwait(false);
 
                 Assert.IsNotNull(response, nameof(response));
-
                 Console.WriteLine(response);
             });
         }

@@ -14,11 +14,7 @@ namespace IpInfo.IntegrationTests
             var response = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
 
             Assert.IsNotNull(response, nameof(response));
-
-            foreach (var property in response.GetType().GetProperties())
-            {
-                Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
-            }
+            Console.WriteLine(response.GetPropertiesText());
         });
     }
 }
