@@ -875,6 +875,7 @@ components:
     Page:
       name: page
       in: query
+      allowEmptyValue: true
       description: The page query parameter can be used to go through paginated records. page starts at 0 and the parameter is part of the response when included in request.
       schema:
         type: string
@@ -882,6 +883,7 @@ components:
     Limit:
       name: limit
       in: query
+      allowEmptyValue: true
       description: The API returns 100 domains per page and has a limit of 1000 domains per page. We return up to 10 million results. The limit parameter can be used to control the number of domains per page.
       schema:
         type: string
