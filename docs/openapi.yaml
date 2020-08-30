@@ -44,6 +44,12 @@ tags:
       description: Find more info here
       url: https://ipinfo.io/developers/hosted-domains
       
+  - name: abuse
+    description: Abuse Contact API.
+    externalDocs:
+      description: Find more info here
+      url: https://ipinfo.io/ip-abuse-contact-api
+      
 paths:
   /:
     get:
@@ -171,6 +177,29 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Domains'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    
+  '/{ip}/abuse':
+    get:
+      tags:
+        - abuse
+      summary: Our abuse contact API returns data containing information belonging to the abuse contact of every IP address on the Internet. Fields included in this response are the abuse contact's email address, postal/ZIP code, city, state, country, name, network, and phone number. 
+      description: Our abuse contact API returns data containing information belonging to the abuse contact of every IP address on the Internet. Fields included in this response are the abuse contact's email address, postal/ZIP code, city, state, country, name, network, and phone number. 
+      operationId: getAbuse
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
+      parameters:
+        - $ref: '#/components/parameters/Ip'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Abuse'
           
         '404':
           $ref: '#/components/responses/NotFound'
@@ -840,6 +869,34 @@ components:
             type: string
             example: 'udemy.com'
         
+    AbuseResponse:
+      type: object
+        
+      properties:
+        address:
+          type: string
+          example: 'US, CA, Mountain View, 1600 Amphitheatre Parkway, 94043'
+          
+        country:
+          type: string
+          example: 'US'
+          
+        email:
+          type: string
+          example: 'network-abuse@google.com'
+          
+        name:
+          type: string
+          example: 'Abuse'
+          
+        network:
+          type: string
+          example: '8.8.8.0/24'
+          
+        phone:
+          type: string
+          example: '+1-650-253-0000'
+        
     Company:
       type: object
       required:
@@ -1013,6 +1070,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/DomainsResponse'
+            
+    Abuse:
+      description: Abuse response object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AbuseResponse'
             
     Privacy:
       description: Privacy response.
