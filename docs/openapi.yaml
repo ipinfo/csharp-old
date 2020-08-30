@@ -537,7 +537,7 @@ components:
           example: 'AS51501 Khabarovsk home networks Ltd'
           
         asn:
-          $ref: '#/components/schemas/Asn'
+          $ref: '#/components/schemas/AsnResponse'
           
         company:
           $ref: '#/components/schemas/Company'
@@ -546,9 +546,9 @@ components:
           $ref: '#/components/schemas/Carrier'
           
         privacy:
-          $ref: '#/components/schemas/Privacy'
+          $ref: '#/components/schemas/PrivacyResponse'
         
-    Asn:
+    AsnResponse:
       type: object
       required:
         - asn
@@ -701,7 +701,7 @@ components:
           type: string
           example: 'comcast.com'
         
-    Ranges:
+    RangesResponse:
       type: object
       required:
         - domain
@@ -794,7 +794,7 @@ components:
           type: string
           example: '120'
         
-    Privacy:
+    PrivacyResponse:
       type: object
       required:
         - vpn
@@ -907,14 +907,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Asn'
+            $ref: '#/components/schemas/AsnResponse'
             
     Ranges:
       description: Ranges response object.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Ranges'
+            $ref: '#/components/schemas/RangesResponse'
             
     Domains:
       description: Domains response object.
@@ -928,7 +928,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Privacy'
+            $ref: '#/components/schemas/PrivacyResponse'
             
     Batch:
       description: Batch response object.
