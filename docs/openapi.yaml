@@ -52,6 +52,10 @@ paths:
       summary: Returns information about the current IP.
       description: Returns information about the current IP.
       operationId: getCurrentInformation
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
       responses:
         '200':
           $ref: '#/components/responses/FullResponse'
@@ -88,6 +92,11 @@ paths:
       summary: Returns information about the selected IP.
       description: Returns information about the selected IP.
       operationId: getInformationByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -199,6 +208,10 @@ paths:
       summary: Returns the current IP.
       description: Returns the current IP.
       operationId: getCurrentIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -214,6 +227,11 @@ paths:
       summary: Returns a ip for the selected IP. Yes, I know this is a pointless method.
       description: Returns a ip for the selected IP. Yes, I know this is a pointless method.
       operationId: getIpByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -231,6 +249,10 @@ paths:
       summary: Returns the current hostname.
       description: Returns the current hostname.
       operationId: getCurrentHostname
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -246,6 +268,11 @@ paths:
       summary: Returns a hostname for the selected IP.
       description: Returns a hostname for the selected IP.
       operationId: getHostnameByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -263,6 +290,10 @@ paths:
       summary: Returns the current city.
       description: Returns the current city.
       operationId: getCurrentCity
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -278,6 +309,11 @@ paths:
       summary: Returns a city for the selected IP.
       description: Returns a city for the selected IP.
       operationId: getCityByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -295,6 +331,10 @@ paths:
       summary: Returns the current region.
       description: Returns current region.
       operationId: getCurrentRegion
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -310,6 +350,11 @@ paths:
       summary: Returns a region for the selected IP.
       description: Returns a region for the selected IP.
       operationId: getRegionByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -327,6 +372,10 @@ paths:
       summary: Returns the current country.
       description: Returns the current country.
       operationId: getCurrentCountry
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -342,6 +391,11 @@ paths:
       summary: Returns a country for the selected IP.
       description: Returns a country for the selected IP.
       operationId: getCountryByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -359,6 +413,10 @@ paths:
       summary: Returns the current location.
       description: Returns the current location.
       operationId: getCurrentLocation
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -374,6 +432,11 @@ paths:
       summary: Get a location for the selected IP.
       description: Returns a location for the selected IP.
       operationId: getLocationByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -391,6 +454,10 @@ paths:
       summary: Returns the current postal.
       description: Returns the current postal.
       operationId: getCurrentPostal
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -406,6 +473,11 @@ paths:
       summary: Returns a postal for the selected IP.
       description: Returns a postal for the selected IP.
       operationId: getPostalByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -423,6 +495,10 @@ paths:
       summary: Returns the current timezone.
       description: Returns the current timezone.
       operationId: getCurrentTimezone
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -438,6 +514,11 @@ paths:
       summary: Returns a timezone for the selected IP.
       description: Returns a timezone for the selected IP.
       operationId: getTimezoneByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -455,6 +536,10 @@ paths:
       summary: Returns the current organization.
       description: Returns the current organization.
       operationId: getCurrentOrganization
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
             
       responses:
         '200':
@@ -470,6 +555,11 @@ paths:
       summary: Returns a organization for the selected IP.
       description: Returns a organization for the selected IP.
       operationId: getOrganizationByIp
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
       parameters:
         - $ref: '#/components/parameters/Ip'
             
@@ -547,6 +637,9 @@ components:
           
         privacy:
           $ref: '#/components/schemas/PrivacyResponse'
+          
+        domains:
+          $ref: '#/components/schemas/DomainsResponse'
         
     AsnResponse:
       type: object
@@ -726,9 +819,7 @@ components:
     DomainsResponse:
       type: object
       required:
-        - ip
         - total
-        - domains
         
       properties:
         ip:
