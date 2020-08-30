@@ -9,7 +9,7 @@ namespace IpInfo.IntegrationTests
     public class PrivacyDetectionTests
     {
         [TestMethod]
-        public async Task BatchTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+        public async Task GetPrivacyInformationByIpTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
             var privacy = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
 
