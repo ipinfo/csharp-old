@@ -38,6 +38,12 @@ tags:
       description: Find more info here
       url: https://ipinfo.io/developers/ranges
       
+  - name: domains
+    description: Hosted Domains API.
+    externalDocs:
+      description: Find more info here
+      url: https://ipinfo.io/developers/hosted-domains
+      
 paths:
   /:
     get:
@@ -83,7 +89,7 @@ paths:
       description: Returns information about the selected IP.
       operationId: getInformationByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -135,6 +141,30 @@ paths:
           
         '404':
           $ref: '#/components/responses/NotFound'
+    
+  '/domains/{ip}':
+    get:
+      tags:
+        - domains
+      summary: Our Hosted Domains, or Reverse IP API returns a list of all of the domains hosted on the provided IP address.
+      description: Returns a list of all of the domains hosted on the provided IP address.
+      operationId: getDomains
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
+      parameters:
+        - $ref: '#/components/parameters/Ip'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Domains'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
           
     
   '/{ip}/privacy':
@@ -150,7 +180,7 @@ paths:
         - ApiKeyAuth: []
         
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -185,7 +215,7 @@ paths:
       description: Returns a ip for the selected IP. Yes, I know this is a pointless method.
       operationId: getIpByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -217,7 +247,7 @@ paths:
       description: Returns a hostname for the selected IP.
       operationId: getHostnameByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -249,7 +279,7 @@ paths:
       description: Returns a city for the selected IP.
       operationId: getCityByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -281,7 +311,7 @@ paths:
       description: Returns a region for the selected IP.
       operationId: getRegionByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -313,7 +343,7 @@ paths:
       description: Returns a country for the selected IP.
       operationId: getCountryByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -345,7 +375,7 @@ paths:
       description: Returns a location for the selected IP.
       operationId: getLocationByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -377,7 +407,7 @@ paths:
       description: Returns a postal for the selected IP.
       operationId: getPostalByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -409,7 +439,7 @@ paths:
       description: Returns a timezone for the selected IP.
       operationId: getTimezoneByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -441,7 +471,7 @@ paths:
       description: Returns a organization for the selected IP.
       operationId: getOrganizationByIp
       parameters:
-        - $ref: '#/components/parameters/ipParam'
+        - $ref: '#/components/parameters/Ip'
             
       responses:
         '200':
@@ -693,6 +723,28 @@ components:
             type: string
             example: '23.24.240.0/29'
         
+    DomainsResponse:
+      type: object
+      required:
+        - ip
+        - total
+        - domains
+        
+      properties:
+        ip:
+          type: string
+          example: '1.1.1.1'
+          
+        total:
+          type: integer
+          example: 17939
+          
+        domains:
+          type: array
+          items:
+            type: string
+            example: 'udemy.com'
+        
     Company:
       type: object
       required:
@@ -796,7 +848,7 @@ components:
               type: string
     
   parameters:
-    ipParam:
+    Ip:
       name: ip
       in: path
       description: A single IPv4 or IPv6 IP address.
@@ -817,6 +869,20 @@ components:
       in: path
       description: a domain.
       required: true
+      schema:
+        type: string
+      
+    Page:
+      name: page
+      in: query
+      description: The page query parameter can be used to go through paginated records. page starts at 0 and the parameter is part of the response when included in request.
+      schema:
+        type: string
+      
+    Limit:
+      name: limit
+      in: query
+      description: The API returns 100 domains per page and has a limit of 1000 domains per page. We return up to 10 million results. The limit parameter can be used to control the number of domains per page.
       schema:
         type: string
       
@@ -841,6 +907,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Ranges'
+            
+    Domains:
+      description: Domains response object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DomainsResponse'
             
     Privacy:
       description: Privacy response.
