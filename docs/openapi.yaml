@@ -26,6 +26,12 @@ tags:
       description: Find more info here
       url: https://ipinfo.io/developers/privacy
       
+  - name: asn
+    description: ASN API.
+    externalDocs:
+      description: Find more info here
+      url: https://ipinfo.io/developers/asn
+      
 paths:
   /:
     get:
@@ -76,6 +82,28 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/FullResponse'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/AS{asn}/json':
+    get:
+      tags:
+        - asn
+      summary: Returns information about an ASN, such as the assigned prefixes, related domain, and more.
+      description: Returns information about an AS.
+      operationId: getAsn
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
+      parameters:
+        - $ref: '#/components/parameters/Asn'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Asn'
           
         '404':
           $ref: '#/components/responses/NotFound'
@@ -468,7 +496,6 @@ components:
         - asn
         - name
         - domain
-        - route
         - type
         
       properties:
@@ -480,9 +507,25 @@ components:
           type: string
           example: 'Sprint Personal Communications Systems'
           
+        country:
+          type: string
+          example: 'US'
+          
+        allocated:
+          type: string
+          example: '1997-02-14'
+          
+        registry:
+          type: string
+          example: 'arin'
+          
         domain:
           type: string
           example: 'sprint.net'
+          
+        num_ips:
+          type: integer
+          example: 71224576
           
         route:
           type: string
@@ -496,6 +539,108 @@ components:
             - business
             - education
             - hosting
+          
+        prefixes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prefix'
+          
+        prefixes6:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prefix6'
+          
+        peers:
+          type: array
+          items:
+            type: string
+            example: '1299'
+          
+        upstreams:
+          type: array
+          items:
+            type: string
+            example: '1299'
+          
+        downstreams:
+          type: array
+          items:
+            type: string
+            example: '109'
+        
+    Prefix:
+      type: object
+      required:
+        - netblock
+        - id
+        - name
+        - country
+        
+      properties:
+        netblock:
+          type: string
+          example: '104.69.216.0/22'
+          
+        id:
+          type: string
+          example: 'AKAMAI'
+          
+        name:
+          type: string
+          example: 'Akamai Technologies, Inc.'
+          
+        country:
+          type: string
+          example: 'US'
+          
+        size:
+          type: string
+          example: '256'
+          
+        status:
+          type: string
+          example: 'ALLOCATION'
+          
+        domain:
+          type: string
+          example: 'quadranet.com'
+        
+    Prefix6:
+      type: object
+      required:
+        - netblock
+        - id
+        - name
+        - country
+        
+      properties:
+        netblock:
+          type: string
+          example: '2601::/20'
+          
+        id:
+          type: string
+          example: 'COMCAST6NET'
+          
+        name:
+          type: string
+          example: 'Comcast Cable Communications, LLC'
+          
+        country:
+          type: string
+          example: 'US'
+          
+        size:
+          type: string
+          example: '20282409603651670423947251286016'
+          
+        status:
+          type: string
+          example: 'ASSIGNMENT'
+          
+        domain:
+          type: string
+          example: 'comcast.com'
         
     Company:
       type: object
@@ -608,6 +753,13 @@ components:
       schema:
         type: string
       
+    Asn:
+      name: asn
+      in: path
+      description: an ASN number.
+      required: true
+      schema:
+        type: integer
       
   responses:
     FullResponse:
@@ -616,6 +768,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/FullResponse'
+            
+    Asn:
+      description: ASN response object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Asn'
             
     Privacy:
       description: Privacy response.
