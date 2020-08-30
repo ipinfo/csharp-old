@@ -19,7 +19,17 @@ namespace IpInfo.IntegrationTests.Utilities
             using var client = new HttpClient();
             var api = new IpInfoApi(token, client);
 
-            await action(api, cancellationToken).ConfigureAwait(false);
+            try
+            {
+                await action(api, cancellationToken).ConfigureAwait(false);
+            }
+            catch (ApiException exception)
+            {
+                if (exception.StatusCode != 403)
+                {
+                    throw;
+                }
+            }
         }
 
         public static async Task GeneralApiTestAsync(Func<IpInfoApi, CancellationToken, Task<FullResponse>> action)
