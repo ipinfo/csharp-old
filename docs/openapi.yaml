@@ -32,6 +32,12 @@ tags:
       description: Find more info here
       url: https://ipinfo.io/developers/asn
       
+  - name: ranges
+    description: IP Ranges API.
+    externalDocs:
+      description: Find more info here
+      url: https://ipinfo.io/developers/ranges
+      
 paths:
   /:
     get:
@@ -104,6 +110,28 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Asn'
+          
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+  '/ranges/{domain}':
+    get:
+      tags:
+        - ranges
+      summary: Our IP address ranges API returns a list of all of the IP addresses ranges assigned to or operated by a company, identified by the provided domain name.
+      description: Returns information about a domain ranges.
+      operationId: getRanges
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+        - ApiKeyAuth: []
+        
+      parameters:
+        - $ref: '#/components/parameters/Domain'
+            
+      responses:
+        '200':
+          $ref: '#/components/responses/Ranges'
           
         '404':
           $ref: '#/components/responses/NotFound'
@@ -643,6 +671,28 @@ components:
           type: string
           example: 'comcast.com'
         
+    Ranges:
+      type: object
+      required:
+        - domain
+        - num_ranges
+        - ranges
+        
+      properties:
+        domain:
+          type: string
+          example: 'comcast.net'
+          
+        num_ranges:
+          type: string
+          example: '37330'
+          
+        ranges:
+          type: array
+          items:
+            type: string
+            example: '23.24.240.0/29'
+        
     Company:
       type: object
       required:
@@ -762,6 +812,14 @@ components:
       schema:
         type: integer
       
+    Domain:
+      name: domain
+      in: path
+      description: a domain.
+      required: true
+      schema:
+        type: string
+      
   responses:
     FullResponse:
       description: Full response object.
@@ -776,6 +834,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Asn'
+            
+    Ranges:
+      description: Ranges response object.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Ranges'
             
     Privacy:
       description: Privacy response.
