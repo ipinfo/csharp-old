@@ -11,13 +11,13 @@ namespace IpInfo.IntegrationTests
         [TestMethod]
         public async Task RangesTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
-            var ranges = await api.GetRangesAsync("comcast.net", cancellationToken);
+            var response = await api.GetRangesAsync("comcast.net", cancellationToken);
 
-            Assert.IsNotNull(ranges, nameof(ranges));
+            Assert.IsNotNull(response, nameof(response));
 
-            foreach (var property in ranges.GetType().GetProperties())
+            foreach (var property in response.GetType().GetProperties())
             {
-                Console.WriteLine($"{property.Name}: {property.GetValue(ranges)}");
+                Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
             }
         });
     }

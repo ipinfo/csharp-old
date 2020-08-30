@@ -11,14 +11,14 @@ namespace IpInfo.IntegrationTests
         [TestMethod]
         public async Task GetPrivacyInformationByIpTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
-            var privacy = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
+            var response = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
 
-            Assert.IsNotNull(privacy, nameof(privacy));
+            Assert.IsNotNull(response, nameof(response));
 
-            Console.WriteLine($"Vpn: {privacy.Vpn}");
-            Console.WriteLine($"Proxy: {privacy.Proxy}");
-            Console.WriteLine($"Tor: {privacy.Tor}");
-            Console.WriteLine($"Hosting: {privacy.Hosting}");
+            foreach (var property in response.GetType().GetProperties())
+            {
+                Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
+            }
         });
     }
 }

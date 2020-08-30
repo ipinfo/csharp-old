@@ -11,13 +11,13 @@ namespace IpInfo.IntegrationTests
         [TestMethod]
         public async Task HostedDomainsTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
-            var domains = await api.GetDomainsAsync("1.1.1.1", cancellationToken);
+            var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken);
 
-            Assert.IsNotNull(domains, nameof(domains));
+            Assert.IsNotNull(response, nameof(response));
 
-            foreach (var property in domains.GetType().GetProperties())
+            foreach (var property in response.GetType().GetProperties())
             {
-                Console.WriteLine($"{property.Name}: {property.GetValue(domains)}");
+                Console.WriteLine($"{property.Name}: {property.GetValue(response)}");
             }
         });
     }
