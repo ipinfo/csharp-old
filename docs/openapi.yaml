@@ -603,6 +603,7 @@ components:
           
         domain:
           type: string
+          nullable: true
           example: 'quadranet.com'
         
     Prefix6:
