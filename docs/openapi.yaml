@@ -884,7 +884,9 @@ components:
         type: integer
         minimum: 0
         default: 0
+        nullable: true
       required: false
+      allowEmptyValue: true
       
     Limit:
       name: limit
@@ -895,7 +897,9 @@ components:
         minimum: 1
         maximum: 1000
         default: 100
+        nullable: true
       required: false
+      allowEmptyValue: true
       
   responses:
     FullResponse:
