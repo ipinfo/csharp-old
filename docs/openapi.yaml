@@ -615,7 +615,6 @@ components:
         - region
         - country
         - loc
-        - postal
         - timezone
         
       properties:
