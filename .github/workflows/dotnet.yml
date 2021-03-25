@@ -29,8 +29,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --nologo
     
-    - name: Run tests
-      run: dotnet test --configuration Release --nologo
+    #- name: Run tests
+    #  run: dotnet test --configuration Release --nologo
         
     - name: Publish
       run: dotnet nuget push
