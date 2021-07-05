@@ -2471,15 +2471,13 @@ namespace IpInfo
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Country { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("loc", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("loc", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Loc { get; set; }
 
         [Newtonsoft.Json.JsonProperty("postal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Postal { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("timezone", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        [Newtonsoft.Json.JsonProperty("timezone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Timezone { get; set; }
 
         [Newtonsoft.Json.JsonProperty("org", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
