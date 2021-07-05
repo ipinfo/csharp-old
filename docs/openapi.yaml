@@ -613,8 +613,6 @@ components:
         - ip
         - city
         - country
-        - loc
-        - timezone
         
       properties:
         ip:
