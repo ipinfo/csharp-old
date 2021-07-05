@@ -612,7 +612,6 @@ components:
       required:
         - ip
         - city
-        - region
         - country
         - loc
         - timezone
