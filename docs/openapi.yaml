@@ -717,6 +717,7 @@ components:
             - business
             - education
             - hosting
+            - inactive
           
         prefixes:
           type: array
