@@ -20,17 +20,7 @@ namespace IpInfo.IntegrationTests.Utilities
             using var client = new HttpClient();
             var api = new IpInfoApi(token, client);
 
-            try
-            {
-                await action(api, cancellationToken).ConfigureAwait(false);
-            }
-            catch (ApiException exception)
-            {
-                if (exception.StatusCode != 403)
-                {
-                    throw;
-                }
-            }
+            await action(api, cancellationToken).ConfigureAwait(false);
         }
 
         public static async Task ApiTestAsync(Func<IpInfoApi, CancellationToken, Task> action)
@@ -41,29 +31,7 @@ namespace IpInfo.IntegrationTests.Utilities
             using var client = new HttpClient();
             var api = new IpInfoApi(client);
 
-            try
-            {
-                await action(api, cancellationToken).ConfigureAwait(false);
-            }
-            catch (ApiException exception)
-            {
-                if (exception.StatusCode != 403)
-                {
-                    throw;
-                }
-            }
-        }
-
-        public static async Task GeneralApiTestAsync(Func<IpInfoApi, CancellationToken, Task<FullResponse>> action)
-        {
-            await ApiTestAsync(async (api, cancellationToken) =>
-            {
-                var response = await action(api, cancellationToken)
-                    .ConfigureAwait(false);
-
-                Assert.IsNotNull(response, nameof(response));
-                Console.WriteLine(response.GetPropertiesText());
-            });
+            await action(api, cancellationToken).ConfigureAwait(false);
         }
 
         public static async Task SingleApiTestAsync(Func<IpInfoApi, CancellationToken, Task<string>> action)

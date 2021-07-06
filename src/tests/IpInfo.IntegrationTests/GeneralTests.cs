@@ -9,12 +9,24 @@ namespace IpInfo.IntegrationTests
     public class GeneralTests
     {
         [TestMethod]
-        public async Task GetCurrentInformationTest() => await BaseTests.GeneralApiTestAsync(
-            (api, cancellationToken) => api.GetCurrentInformationAsync(cancellationToken));
+        public async Task GetCurrentInformationTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) => 
+        { 
+            var response = await api.GetCurrentInformationAsync(cancellationToken)
+                .ConfigureAwait(false);
+
+            Assert.IsNotNull(response, nameof(response));
+            Console.WriteLine(response.GetPropertiesText());
+        });
 
         [TestMethod]
-        public async Task GetInformationByIpTest() => await BaseTests.GeneralApiTestAsync(
-            (api, cancellationToken) => api.GetInformationByIpAsync("8.8.8.8", cancellationToken));
+        public async Task GetInformationByIpTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+        {
+            var response = await api.GetInformationByIpAsync("8.8.8.8", cancellationToken)
+                .ConfigureAwait(false);
+
+            Assert.IsNotNull(response, nameof(response));
+            Console.WriteLine(response.GetPropertiesText());
+        });
 
         [TestMethod]
         public async Task BatchTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
