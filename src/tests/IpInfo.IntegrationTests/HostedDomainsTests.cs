@@ -11,7 +11,7 @@ namespace IpInfo.IntegrationTests
         [TestMethod]
         public async Task HostedDomainsTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
-            var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken);
+            var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken: cancellationToken);
 
             Assert.IsNotNull(response, nameof(response));
             Console.WriteLine(response.GetPropertiesText());
