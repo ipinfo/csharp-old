@@ -34,7 +34,7 @@ namespace IpInfo.IntegrationTests
         });
 
         [TestMethod]
-        public async Task GetInformationByIpsTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+        public async Task GetInformationByIpsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
         {
             var dictionary = await api.GetInformationByIpsAsync(new[]
             {
