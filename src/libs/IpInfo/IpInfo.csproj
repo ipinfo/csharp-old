@@ -13,8 +13,16 @@
 - Carrier information (the name of the mobile carrier and MNC and MCC for that carrier if the IP is used exclusively for mobile traffic)</Description>
     <PackageTags>ipinfo, ip-address, ip-geolocation, ip-data</PackageTags>
   </PropertyGroup>
-
+  
   <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)docs\openapi.nswag" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="H.NSwag.Generator" Version="13.11.3.30">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
