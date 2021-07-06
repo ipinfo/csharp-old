@@ -4,7 +4,7 @@
   "documentGenerator": {
     "fromDocument": {
       "json": "",
-      "url": "https://raw.githubusercontent.com/ipinfo/csharp/master/docs/openapi.yaml",
+      "url": "openapi.yaml",
       "output": null,
       "newLineBehavior": "Auto"
     }
