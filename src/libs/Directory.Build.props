@@ -28,7 +28,8 @@
     <PackageProjectUrl>https://ipinfo.io/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ipinfo/csharp/</RepositoryUrl>
     <PackageIcon>nuget_icon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <!-- Remove later. PackageReadmeFile conflicts with IncludeSymbols now. -->
+    <!--<PackageReadmeFile>README.md</PackageReadmeFile>-->
   </PropertyGroup>
 
   <ItemGroup Label="Nuget">
@@ -39,8 +40,7 @@
   <PropertyGroup Label="Source Link">
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedAllSources>true</EmbedAllSources>
-    <!-- Remove later. PackageReadmeFile conflicts with this now. -->
-    <!--<IncludeSymbols>true</IncludeSymbols>-->
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
