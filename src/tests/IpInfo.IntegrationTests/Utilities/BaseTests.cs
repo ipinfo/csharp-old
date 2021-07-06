@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IpInfo.IntegrationTests.Utilities
@@ -41,7 +42,8 @@ namespace IpInfo.IntegrationTests.Utilities
                 var response = await action(api, cancellationToken)
                     .ConfigureAwait(false);
 
-                Assert.IsNotNull(response, nameof(response));
+                response.Should().NotBeNull();
+
                 Console.WriteLine(response);
             });
         }

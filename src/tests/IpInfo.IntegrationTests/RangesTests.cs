@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using FluentAssertions;
 using IpInfo.IntegrationTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +14,8 @@ namespace IpInfo.IntegrationTests
         {
             var response = await api.GetRangesAsync("comcast.net", cancellationToken);
 
-            Assert.IsNotNull(response, nameof(response));
+            response.Should().NotBeNull();
+
             Console.WriteLine(response.GetPropertiesText());
         });
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using FluentAssertions;
 using IpInfo.IntegrationTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +14,8 @@ namespace IpInfo.IntegrationTests
         {
             var response = await api.GetAsnAsync(7922, cancellationToken);
 
-            Assert.IsNotNull(response, nameof(response));
+            response.Should().NotBeNull();
+
             Console.WriteLine(response.GetPropertiesText());
         });
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using FluentAssertions;
 using IpInfo.IntegrationTests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,7 +15,7 @@ namespace IpInfo.IntegrationTests
             var response = await api.GetCurrentInformationAsync(cancellationToken)
                 .ConfigureAwait(false);
 
-            Assert.IsNotNull(response, nameof(response));
+            response.Should().NotBeNull();
         });
 
         [TestMethod]
@@ -23,19 +24,19 @@ namespace IpInfo.IntegrationTests
             var response = await api.GetInformationByIpAsync("8.8.8.8", cancellationToken)
                 .ConfigureAwait(false);
 
-            Assert.IsNotNull(response, nameof(response));
+            response.Should().NotBeNull();
         });
 
         [TestMethod]
         public async Task BatchTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
         {
             var dictionary = await api.BatchAsync(new []
-                {
-                    "8.8.8.8",
-                    "8.8.8.8/city",
-                }, cancellationToken);
+            {
+                "8.8.8.8",
+                "8.8.8.8/city",
+            }, cancellationToken);
 
-            Assert.IsNotNull(dictionary, nameof(dictionary));
+            dictionary.Should().NotBeNull();
 
             foreach (var pair in dictionary)
             {
@@ -52,11 +53,11 @@ namespace IpInfo.IntegrationTests
                 "8.8.4.4",
             }, cancellationToken);
 
-            Assert.IsNotNull(dictionary, nameof(dictionary));
+            dictionary.Should().NotBeNull();
 
             foreach (var pair in dictionary)
             {
-                Assert.IsNotNull(pair.Value, nameof(pair.Value));
+                pair.Value.Should().NotBeNull();
 
                 Console.WriteLine($"{pair.Key}:");
                 foreach (var property in pair.Value.GetType().GetProperties())
