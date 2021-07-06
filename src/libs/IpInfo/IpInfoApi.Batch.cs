@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +22,9 @@ namespace IpInfo
 
             return dictionary.ToDictionary(
                 pair => pair.Key,
-                pair => JsonConvert.DeserializeObject<FullResponse>(pair.Value.ToString()));
+                pair => 
+                    JsonConvert.DeserializeObject<FullResponse>(pair.Value.ToString()) ?? 
+                    throw new InvalidOperationException($"FullResponse is null for {pair.Key}."));
         }
     }
 }
