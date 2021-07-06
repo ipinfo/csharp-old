@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace IpInfo
@@ -15,6 +16,9 @@ namespace IpInfo
         /// <param name="httpClient"></param>
         public IpInfoApi(string token, HttpClient httpClient) : this(httpClient)
         {
+            token = token ?? throw new ArgumentNullException(nameof(token));
+            httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
     }
