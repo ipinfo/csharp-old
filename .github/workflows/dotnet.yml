@@ -43,9 +43,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
     
-    # Need test token
-    #- name: Run tests
-    #  run: dotnet test --configuration Release
+    - name: Run tests
+      run: dotnet test --configuration Release
         
     - name: Publish
       run: dotnet nuget push

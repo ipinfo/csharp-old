@@ -9,7 +9,7 @@ namespace IpInfo.IntegrationTests
     public class HostedDomainsTests
     {
         [TestMethod]
-        public async Task HostedDomainsTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+        public async Task HostedDomainsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
         {
             var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken: cancellationToken);
 

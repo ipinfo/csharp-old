@@ -9,7 +9,7 @@ namespace IpInfo.IntegrationTests
     public class RangesTests
     {
         [TestMethod]
-        public async Task RangesTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+        public async Task RangesTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
         {
             var response = await api.GetRangesAsync("comcast.net", cancellationToken);
 

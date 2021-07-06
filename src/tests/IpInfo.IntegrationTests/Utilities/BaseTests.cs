@@ -8,16 +8,38 @@ namespace IpInfo.IntegrationTests.Utilities
 {
     internal static class BaseTests
     {
+        public static async Task ApiTestWithTokenAsync(Func<IpInfoApi, CancellationToken, Task> action)
+        {
+            using var source = new CancellationTokenSource(TimeSpan.FromSeconds(15));
+            var cancellationToken = source.Token;
+
+            var token = 
+                Environment.GetEnvironmentVariable("IPINFO_TOKEN") ??
+                throw new AssertInconclusiveException("IPINFO_TOKEN environment variable is not found.");
+
+            using var client = new HttpClient();
+            var api = new IpInfoApi(token, client);
+
+            try
+            {
+                await action(api, cancellationToken).ConfigureAwait(false);
+            }
+            catch (ApiException exception)
+            {
+                if (exception.StatusCode != 403)
+                {
+                    throw;
+                }
+            }
+        }
+
         public static async Task ApiTestAsync(Func<IpInfoApi, CancellationToken, Task> action)
         {
             using var source = new CancellationTokenSource(TimeSpan.FromSeconds(15));
             var cancellationToken = source.Token;
 
-            var token = Environment.GetEnvironmentVariable("IPINFO_TOKEN") ??
-                        throw new InvalidOperationException("token is null.");
-
             using var client = new HttpClient();
-            var api = new IpInfoApi(token, client);
+            var api = new IpInfoApi(client);
 
             try
             {
