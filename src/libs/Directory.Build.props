@@ -39,8 +39,7 @@
   <PropertyGroup Label="Source Link">
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedAllSources>true</EmbedAllSources>
-    <!-- Remove later. PackageReadmeFile conflicts with this now. -->
-    <!--<IncludeSymbols>true</IncludeSymbols>-->
+    <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
