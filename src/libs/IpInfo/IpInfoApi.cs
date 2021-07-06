@@ -2460,45 +2460,45 @@ namespace IpInfo
         public string Ip { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("hostname", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Hostname { get; set; } = default!;
+        public string? Hostname { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("city", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string City { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("region", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Region { get; set; } = default!;
+        public string? Region { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Country { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("loc", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Loc { get; set; } = default!;
+        public string? Loc { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("postal", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Postal { get; set; } = default!;
+        public string? Postal { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("timezone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Timezone { get; set; } = default!;
+        public string? Timezone { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("org", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Org { get; set; } = default!;
+        public string? Org { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("asn", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public AsnResponse Asn { get; set; } = default!;
+        public AsnResponse? Asn { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("company", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Company Company { get; set; } = default!;
+        public Company? Company { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("carrier", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Carrier Carrier { get; set; } = default!;
+        public Carrier? Carrier { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("privacy", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PrivacyResponse Privacy { get; set; } = default!;
+        public PrivacyResponse? Privacy { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("domains", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DomainsResponse Domains { get; set; } = default!;
+        public DomainsResponse? Domains { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -2524,23 +2524,23 @@ namespace IpInfo
         public string Name { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Country { get; set; } = default!;
+        public string? Country { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("allocated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Allocated { get; set; } = default!;
+        public string? Allocated { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("registry", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Registry { get; set; } = default!;
+        public string? Registry { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Domain { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("num_ips", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Num_ips { get; set; } = default!;
+        public int? Num_ips { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("route", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Route { get; set; } = default!;
+        public string? Route { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
@@ -2548,19 +2548,19 @@ namespace IpInfo
         public AsnResponseType Type { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("prefixes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<Prefix> Prefixes { get; set; } = default!;
+        public System.Collections.Generic.ICollection<Prefix>? Prefixes { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("prefixes6", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<Prefix6> Prefixes6 { get; set; } = default!;
+        public System.Collections.Generic.ICollection<Prefix6>? Prefixes6 { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("peers", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Peers { get; set; } = default!;
+        public System.Collections.Generic.ICollection<string>? Peers { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("upstreams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Upstreams { get; set; } = default!;
+        public System.Collections.Generic.ICollection<string>? Upstreams { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("downstreams", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Downstreams { get; set; } = default!;
+        public System.Collections.Generic.ICollection<string>? Downstreams { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -2594,10 +2594,10 @@ namespace IpInfo
         public string Country { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Size { get; set; } = default!;
+        public string? Size { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Status { get; set; } = default!;
+        public string? Status { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Domain { get; set; } = default!;
@@ -2634,13 +2634,13 @@ namespace IpInfo
         public string Country { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Size { get; set; } = default!;
+        public string? Size { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Status { get; set; } = default!;
+        public string? Status { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("domain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Domain { get; set; } = default!;
+        public string? Domain { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -2685,16 +2685,16 @@ namespace IpInfo
     public partial class DomainsResponse
     {
         [Newtonsoft.Json.JsonProperty("ip", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Ip { get; set; } = default!;
+        public string? Ip { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Page { get; set; } = default!;
+        public int? Page { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("total", Required = Newtonsoft.Json.Required.Always)]
         public int Total { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("domains", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Domains { get; set; } = default!;
+        public System.Collections.Generic.ICollection<string>? Domains { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
@@ -2712,22 +2712,22 @@ namespace IpInfo
     public partial class AbuseResponse
     {
         [Newtonsoft.Json.JsonProperty("address", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Address { get; set; } = default!;
+        public string? Address { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("country", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Country { get; set; } = default!;
+        public string? Country { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; } = default!;
+        public string? Email { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; } = default!;
+        public string? Name { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("network", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Network { get; set; } = default!;
+        public string? Network { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Phone { get; set; } = default!;
+        public string? Phone { get; set; } = default!;
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties = new System.Collections.Generic.Dictionary<string, object>();
 
