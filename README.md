@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/ipinfo/csharp.svg?label=License&maxAge=86400)](LICENSE) 
 [![Requirements](https://img.shields.io/badge/Requirements-.NET%20Standard%202.0-blue.svg)](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md) 
 [![Requirements](https://img.shields.io/badge/Requirements-.NET%20Framework%204.5-blue.svg)](https://github.com/dotnet/standard/blob/master/docs/versions/netstandard2.0.md) 
-[![Build Status](https://github.com/ipinfo/csharp/workflows/.NET%20Core/badge.svg?branch=master)](https://github.com/ipinfo/csharp/actions?query=workflow%3A%22.NET+Core%22)
+[![Build Status](https://github.com/ipinfo/csharp/workflows/.NET/badge.svg?branch=master)](https://github.com/ipinfo/csharp/actions?query=workflow%3A%22.NET%22)
 
 This is the official C# client library for the IPinfo.io IP address API, allowing you to lookup your own IP address, or get any of the following details for an IP:
 
