@@ -15,7 +15,6 @@ namespace IpInfo.IntegrationTests
                 .ConfigureAwait(false);
 
             Assert.IsNotNull(response, nameof(response));
-            Console.WriteLine(response.GetPropertiesText());
         });
 
         [TestMethod]
@@ -25,7 +24,6 @@ namespace IpInfo.IntegrationTests
                 .ConfigureAwait(false);
 
             Assert.IsNotNull(response, nameof(response));
-            Console.WriteLine(response.GetPropertiesText());
         });
 
         [TestMethod]
