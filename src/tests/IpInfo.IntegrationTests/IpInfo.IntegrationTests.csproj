@@ -1,10 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net45</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworks>net5.0;net4.5</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,12 +10,12 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net4.5'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IpInfo\IpInfo.csproj" />
+    <ProjectReference Include="..\..\libs\IpInfo\IpInfo.csproj" />
   </ItemGroup>
 
 </Project>
