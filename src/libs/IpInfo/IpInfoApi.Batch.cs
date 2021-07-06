@@ -17,7 +17,7 @@ namespace IpInfo
             IEnumerable<string> ips, 
             CancellationToken cancellationToken)
         {
-            var dictionary = await BatchAsync(ips, cancellationToken);
+            var dictionary = await BatchAsync(ips, cancellationToken).ConfigureAwait(false);
 
             return dictionary.ToDictionary(
                 pair => pair.Key,
