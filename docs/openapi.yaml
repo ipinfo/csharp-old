@@ -611,13 +611,15 @@ components:
       type: object
       required:
         - ip
-        - city
-        - country
         
       properties:
         ip:
           type: string
           example: '66.87.125.72'
+
+        bogon:
+          type: boolean
+          example: false
           
         hostname:
           type: string
