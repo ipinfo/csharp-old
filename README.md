@@ -78,7 +78,7 @@ foreach (var pair in dictionary)
 ## Privacy Detection API
 
 ```cs
-// WARNING: Token required.
+// WARNING: Token required. The token must have at least permissions of the Business Plan. Otherwise, you'll get a response with an HTTP 403 status code. 
 var privacy = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
 
 Console.WriteLine($"Vpn: {privacy.Vpn}");
