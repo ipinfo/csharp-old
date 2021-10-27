@@ -28,8 +28,7 @@
     <PackageProjectUrl>https://ipinfo.io/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ipinfo/csharp/</RepositoryUrl>
     <PackageIcon>nuget_icon.png</PackageIcon>
-    <!-- Remove later. PackageReadmeFile conflicts with IncludeSymbols now. -->
-    <!--<PackageReadmeFile>README.md</PackageReadmeFile>-->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup Label="Nuget">
