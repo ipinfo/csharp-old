@@ -1,19 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using IpInfo;
 
-namespace IpInfo.Example
-{
-    internal static class Program
-    {
-        private static async Task Main()
-        {
-            using var client = new HttpClient();
-            var api = new IpInfoApi(client);
+using var client = new HttpClient();
+var api = new IpInfoApi(client);
 
-            var response = await api.GetCurrentInformationAsync();
+var response = await api.GetCurrentInformationAsync();
 
-            Console.WriteLine($"City: {response.City}");
-        }
-    }
-}
+Console.WriteLine($"City: {response.City}");

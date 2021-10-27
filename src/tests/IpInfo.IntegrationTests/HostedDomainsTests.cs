@@ -1,22 +1,15 @@
-using System;
-using System.Threading.Tasks;
-using FluentAssertions;
-using IpInfo.IntegrationTests.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace IpInfo.IntegrationTests;
 
-namespace IpInfo.IntegrationTests
+[TestClass]
+public class HostedDomainsTests
 {
-    [TestClass]
-    public class HostedDomainsTests
+    [TestMethod]
+    public async Task HostedDomainsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
     {
-        [TestMethod]
-        public async Task HostedDomainsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
-        {
-            var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken: cancellationToken);
+        var response = await api.GetDomainsAsync("1.1.1.1", cancellationToken: cancellationToken);
 
-            response.Should().NotBeNull();
+        response.Should().NotBeNull();
 
-            Console.WriteLine(response.GetPropertiesText());
-        });
-    }
+        Console.WriteLine(response.GetPropertiesText());
+    });
 }

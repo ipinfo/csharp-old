@@ -1,71 +1,64 @@
-using System;
-using System.Threading.Tasks;
-using FluentAssertions;
-using IpInfo.IntegrationTests.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace IpInfo.IntegrationTests;
 
-namespace IpInfo.IntegrationTests
+[TestClass]
+public class GeneralTests
 {
-    [TestClass]
-    public class GeneralTests
+    [TestMethod]
+    public async Task GetCurrentInformationTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
     {
-        [TestMethod]
-        public async Task GetCurrentInformationTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) => 
-        { 
-            var response = await api.GetCurrentInformationAsync(cancellationToken)
-                .ConfigureAwait(false);
+        var response = await api.GetCurrentInformationAsync(cancellationToken)
+            .ConfigureAwait(false);
 
-            response.Should().NotBeNull();
-        });
+        response.Should().NotBeNull();
+    });
 
-        [TestMethod]
-        public async Task GetInformationByIpTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+    [TestMethod]
+    public async Task GetInformationByIpTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+    {
+        var response = await api.GetInformationByIpAsync("8.8.8.8", cancellationToken)
+            .ConfigureAwait(false);
+
+        response.Should().NotBeNull();
+    });
+
+    [TestMethod]
+    public async Task BatchTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
+    {
+        var dictionary = await api.BatchAsync(new[]
         {
-            var response = await api.GetInformationByIpAsync("8.8.8.8", cancellationToken)
-                .ConfigureAwait(false);
-
-            response.Should().NotBeNull();
-        });
-
-        [TestMethod]
-        public async Task BatchTest() => await BaseTests.ApiTestAsync(async (api, cancellationToken) =>
-        {
-            var dictionary = await api.BatchAsync(new []
-            {
                 "8.8.8.8",
                 "8.8.8.8/city",
-            }, cancellationToken);
+        }, cancellationToken);
 
-            dictionary.Should().NotBeNull();
+        dictionary.Should().NotBeNull();
 
-            foreach (var pair in dictionary)
-            {
-                Console.WriteLine($"{pair.Key}: {pair.Value}");
-            }
-        });
-
-        [TestMethod]
-        public async Task GetInformationByIpsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
+        foreach (var pair in dictionary)
         {
-            var dictionary = await api.GetInformationByIpsAsync(new[]
-            {
+            Console.WriteLine($"{pair.Key}: {pair.Value}");
+        }
+    });
+
+    [TestMethod]
+    public async Task GetInformationByIpsTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
+    {
+        var dictionary = await api.GetInformationByIpsAsync(new[]
+        {
                 "8.8.8.8",
                 "8.8.4.4",
-            }, cancellationToken);
+        }, cancellationToken);
 
-            dictionary.Should().NotBeNull();
+        dictionary.Should().NotBeNull();
 
-            foreach (var pair in dictionary)
+        foreach (var pair in dictionary)
+        {
+            pair.Value.Should().NotBeNull();
+
+            Console.WriteLine($"{pair.Key}:");
+            foreach (var property in pair.Value.GetType().GetProperties())
             {
-                pair.Value.Should().NotBeNull();
-
-                Console.WriteLine($"{pair.Key}:");
-                foreach (var property in pair.Value.GetType().GetProperties())
-                {
-                    Console.WriteLine($"  {property.Name}: {property.GetValue(pair.Value)}");
-                }
-                Console.WriteLine();
+                Console.WriteLine($"  {property.Name}: {property.GetValue(pair.Value)}");
             }
-        });
-    }
+            Console.WriteLine();
+        }
+    });
 }

@@ -1,22 +1,15 @@
-using System;
-using System.Threading.Tasks;
-using FluentAssertions;
-using IpInfo.IntegrationTests.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace IpInfo.IntegrationTests;
 
-namespace IpInfo.IntegrationTests
+[TestClass]
+public class PrivacyDetectionTests
 {
-    [TestClass]
-    public class PrivacyDetectionTests
+    [TestMethod]
+    public async Task GetPrivacyInformationByIpTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
     {
-        [TestMethod]
-        public async Task GetPrivacyInformationByIpTest() => await BaseTests.ApiTestWithTokenAsync(async (api, cancellationToken) =>
-        {
-            var response = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
+        var response = await api.GetPrivacyInformationByIpAsync("8.8.8.8", cancellationToken);
 
-            response.Should().NotBeNull();
+        response.Should().NotBeNull();
 
-            Console.WriteLine(response.GetPropertiesText());
-        });
-    }
+        Console.WriteLine(response.GetPropertiesText());
+    });
 }
