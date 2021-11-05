@@ -948,6 +948,7 @@ components:
         - proxy
         - tor
         - hosting
+        - relay
         
       properties:
         vpn:
@@ -963,6 +964,10 @@ components:
           example: false
           
         hosting:
+          type: boolean
+          example: false
+
+        relay:
           type: boolean
           example: false
           
