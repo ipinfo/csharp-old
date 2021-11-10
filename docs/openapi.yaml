@@ -970,6 +970,10 @@ components:
         relay:
           type: boolean
           example: false
+
+        service:
+          type: string
+          example: ''
           
     Error:
       type: object
