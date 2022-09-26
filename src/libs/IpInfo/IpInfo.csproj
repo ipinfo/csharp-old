@@ -7,7 +7,7 @@
   <PropertyGroup Label="Nuget">
     <Description>This is the official C# client library for the IPinfo.io IP address API, allowing you to lookup your own IP address, or get any of the following details for an IP:
 
-- IP geolocation / geoIP data (city, region, country, postal code, latitude and longitude)
+- IP geolocation data (city, region, country, postal code, latitude and longitude)
 - ASN details (ISP or network operator, associated domain name, and type, such as business, hosting or company)
 - Firmographics data (the name and domain of the business that uses the IP address)
 - Carrier information (the name of the mobile carrier and MNC and MCC for that carrier if the IP is used exclusively for mobile traffic)</Description>
